@@ -3,11 +3,9 @@
 
 Collaborators:
 
-Trishank Rao: rao78@purdue.edu 
-
-Sagar Nattuvetty: snattuve@purdue.edu
-
-Yazin Farook: yfarook@purdue.edu
+Trishank Rao: rao78@purdue.edu <br/>
+Sagar Nattuvetty: snattuve@purdue.edu<br/?
+Yazin Farook: yfarook@purdue.edu<br/>
 
 ---
 Description:
