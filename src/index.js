@@ -3,6 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import * as firebase from 'firebase';
+
+var config = {
+    apiKey: "AIzaSyBkKo5406FczXmuhYExj_kfQF6pVfIVgdE",
+    authDomain: "paycrunch.firebaseapp.com",
+    databaseURL: "https://paycrunch.firebaseio.com",
+    projectId: "paycrunch",
+    storageBucket: "paycrunch.appspot.com",
+    messagingSenderId: "501652133825"
+  };
+  firebase.initializeApp(config);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
