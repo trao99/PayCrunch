@@ -1,36 +1,23 @@
 {
-  "name": "paycrunch",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "create-react-app": "^2.1.8",
-    "express": "^4.16.4",
-    "firebase": "^5.10.0",
-    "mongoose": "^5.5.2",
-    "morgan": "^1.9.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
-  },
+  "name": "PayCrunch",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+     "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\""
   },
-  "proxy": { "http://localhost:3001"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trao99/PayCrunch.git"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trao99/PayCrunch/issues"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
-  
+  "homepage": "https://github.com/trao99/PayCrunch#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
 }
