@@ -1,49 +1,59 @@
 const mongoose = require("mongoose")    //added
 //var cors = require("cors"); //added
-
-var express = require('express');
-var path = require('path');
-var bodyParser = require('body-parser');
-//var mongodb = require('mongodb');
-
-//var dbConn = mongodb.MongoClient.connect('mongodb://localhost:27017');
-//var dbConn = mongoose.connect('mongodb+srv://yfarook:<password>@cluster0-prk8z.mongodb.net/test', {useNewUrlParser: true});
-
-//app.use(cors());
+const expressLayouts = require('express-ejs-layouts');
+const flash = require('connect-flash')
+const session = require('express-session');
+const express = require('express');
+const path = require('path');
+const passport = require('passport');
 
 
-
-var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/login-info?retryWrites=true', {useNewUrlParser: true});
-
-//added
-let myDb = mongoose.connection;
-myDb.once("open", () => console.log("connected to the database"));
-//added
-
-
-
+//passport config
+require('./config/passport')(passport);
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.resolve(__dirname, 'public')));
+// DB config
+const db = require('./config/keys').mongoURI;
 
-app.post('/get-login', function (req, res) {
-    dbConn.then(function(db) {
-        delete req.body._id; // for safety reasons
-        //const myDb = db.db('login-info');
-        myDb.collection('loginIDs').insertOne(req.body);
-    });
-    res.send('Data received:\n' + JSON.stringify(req.body));
+// Connect to Mongo
+mongoose.connect(db, { useNewUrlParser: true })
+.then(() => console.log('MongoDB Connected'));
+
+
+// EJS
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
+
+// bodyParser
+app.use(express.urlencoded({ extended: true }));
+
+// Express Session
+app.use(
+  session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+// passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+// Gloabal variables
+app.use(function(req, res, next){
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
 });
 
-app.get('/view-login',  function(req, res) {
-    dbConn.then(function(db) {
-        //const myDb = db.db('login-info');
-        myDb.collection('loginIDs').find({}).toArray().then(function(feedbacks) {
-            res.status(200).json(feedbacks);
-        });
-    });
-});
+// Routes
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
 
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0' );
