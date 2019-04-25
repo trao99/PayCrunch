@@ -98,10 +98,23 @@ app.get('/getIncome',  function(req, res) {
     if (err) return console.log(err)
     // renders index.ejs
     var netWorth = 0;
+    var listOfSums = [];
     for(var i=0; i<result.length; i++){
-      console.log(result[i].income);
+      var income = parseInt(result[i].income);
+      var expense = 0;
+      if(isNaN(income)){
+        income = 0;
+        expense = parseInt(result[i].expense);
+        console.log(expense)
+      }
+
+      netWorth = netWorth+parseInt(income);
+      netWorth = netWorth - parseInt(expense);
+      listOfSums.push(netWorth)
+      //console.log(parseInt(income));
+      //console.log(netWorth);
     }
-    res.render('incomeReport.ejs', {quotes: result, net: netWorth})
+    res.render('incomeReport.ejs', {quotes:  result, net: listOfSums})
   })
 });
 

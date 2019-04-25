@@ -1,8 +1,37 @@
--<ul class="quotes">
+<ul class="quotes">
+  <div class="card mb-3">
+    <div class="card-header">
+      <i class="fas fa-table"></i>
+      Data Table Example</div>
+    <div class="card-body">
+      <div class="table-responsive">
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <tr>
+    <th>Name of Income/Expense</th>
+    <th>Income/Expense</th>
+    <th>Net</th>
+    </tr>
   <% for(var i=0; i<quotes.length; i++) {%>
-    <li class="quote">
-      <span><%= quotes[i].typeIncome %></span>
-      <span><%= quotes[i].income %></span>
-    </li>
+    <tr class="quote">
+
+
+      <% if(isNaN(quotes[i].income)){%>
+
+        <td><font size="3" color="red"><%= quotes[i].nameExpense %></font></td>
+        <td><font size="3" color="red"><%= quotes[i].expense %></font></td>
+      <% } else { %>
+        <td><font size="3" color="green"><%= quotes[i].typeIncome %></font></td>
+        <td><font size="3" color="green"><%= quotes[i].income %></font></td>
+      <% } %>
+
+
+      <td><%= net[i] %> </td>
+
+
+    </tr>
   <% } %>
+  </table>
+  </div>
+  </div>
+  </div>
 </ul>
