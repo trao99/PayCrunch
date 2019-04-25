@@ -16,8 +16,8 @@ var bodyParser = require('body-parser');
 var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
 
 //added
-let db = mongoose.connection;
-db.once("open", () => console.log("connected to the database"));
+let myDb = mongoose.connection;
+myDb.once("open", () => console.log("connected to the database"));
 //added
 
 
@@ -31,11 +31,10 @@ app.post('/addIncome', function (req, res) {
     console.log("reacfed");
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
-        var temp = dbConn.db('login-info');
-
-        temp.collection('loginIDs').insertOne(req.body);
+        //var temp = dbConn.db('login-info');
+        myDb.collection('loginIDs').insertOne(req.body);
     });
-    res.send('Data received:\n' + JSON.stringify(req.body));
+  //  res.send('Data received:\n' + JSON.stringify(req.body));
 });
 
 
