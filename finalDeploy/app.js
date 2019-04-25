@@ -14,11 +14,13 @@ require('./config/passport')(passport);
 var app = express();
 
 // DB config
-const db = require('./config/keys').mongoURI;
+var passDb = require('./config/keys').mongoURI;
 
 // Connect to Mongo
-mongoose.connect(db, { useNewUrlParser: true })
+var dbConn = mongoose.connect(passDb, { useNewUrlParser: true })
 .then(() => console.log('MongoDB Connected'));
+
+let myDb = mongoose.connection;
 
 // EJS
 app.use(expressLayouts);
@@ -56,6 +58,13 @@ app.use(function(req, res, next){
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+
+
+//var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/all-transaction-info?retryWrites=true', {useNewUrlParser: true});
+
+//added
+//let myDb = mongoose.connection;
+//myDb = mongoose.connection;
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 
@@ -64,7 +73,7 @@ app.post('/addIncome', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('loginIDs').insertOne(req.body);
+        myDb.collection('transactions').insertOne(req.body);
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -76,7 +85,7 @@ app.post('/addExpense', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('loginIDs').insertOne(req.body);
+        myDb.collection('transactions').insertOne(req.body);
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -84,7 +93,8 @@ app.post('/addExpense', function (req, res) {
 });
 
 
-app.get('/view-login',  function(req, res) {
+app.get('/getIncome',  function(req, res) {
+    var result = [];
     dbConn.then(function(db) {
         db.collection('loginIDs').find({}).toArray().then(function(feedbacks) {
             res.status(200).json(feedbacks);
