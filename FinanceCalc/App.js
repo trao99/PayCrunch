@@ -34,7 +34,9 @@ app.post('/addIncome', function (req, res) {
         //var temp = dbConn.db('login-info');
         myDb.collection('loginIDs').insertOne(req.body);
     });
-  //  res.send('Data received:\n' + JSON.stringify(req.body));
+    // res.send('helloo');
+    res.redirect("/index.html");
+
 });
 
 
