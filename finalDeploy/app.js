@@ -94,12 +94,11 @@ app.post('/addExpense', function (req, res) {
 
 
 app.get('/getIncome',  function(req, res) {
-    var result = [];
-    dbConn.then(function(db) {
-        db.collection('transactions').find({}).toArray().then(function(feedbacks) {
-            res.status(200).json(feedbacks);
-        });
-    });
+  myDb.collection('transactions').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    // renders index.ejs
+    res.render('incomeReport.ejs', {quotes: result})
+  })
 });
 
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0' );
