@@ -11,7 +11,7 @@ router.get('/', (req, res) => res.render('welcome'));
 //     name: req.user.name
 // }));
 
-router.get('/dashboard', ensureAuthenticated, (req, res) =>
+router.get('/index', ensureAuthenticated, (req, res) =>
     res.render('/Users/veronica/Desktop/cScience/cs252/PayCrunch/finalDeploy/public/index.html'));
 
 module.exports = router;
