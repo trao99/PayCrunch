@@ -25,18 +25,12 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Expense Form</div>
       <div class="card-body">
-        <form>
+        <form method="POST" action="/addExpense" >
           <div class="form-group">
             <div class="header">Amount</div>
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <input type="number" name="expense" class="form-control" placeholder="Expense" required="required" autofocus="autofocus">
               <label for="inputEmail"></label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="header">Temporary</div>
-            <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
             </div>
           </div>
           <div class="form-group">
@@ -47,7 +41,7 @@
               </label>
             </div> -->
           </div>
-          <a class="btn btn-primary btn-block" href="index.html">Add Expense</a>
+          <button class="btn btn-primary btn-block">Add Expense</button>
         </form>
         <!-- <div class="text-center">
           <a class="d-block small mt-3" href="register.html">Register an Account</a>

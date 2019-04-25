@@ -28,7 +28,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, 'public')));
 //console.log("hello");
 app.post('/addIncome', function (req, res) {
-    console.log("reacfed");
+    //console.log("reacfed");
+    dbConn.then(function(db) {
+        delete req.body._id; // for safety reasons
+        //var temp = dbConn.db('login-info');
+        myDb.collection('loginIDs').insertOne(req.body);
+    });
+    // res.send('helloo');
+    res.redirect("/index.html");
+
+});
+
+app.post('/addExpense', function (req, res) {
+    //console.log("reacfed");
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
