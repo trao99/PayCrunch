@@ -25,29 +25,30 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Add Form</div>
       <div class="card-body">
-        <form>
+        <form method="POST" action="/addIncome" >
           <div class="form-group">
             <div class="header">Amount</div>
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <input type="text" class="input100" placeholder="Email address" required="required" autofocus="autofocus">
               <label for="inputEmail"></label>
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <div class="header">Temporary</div>
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <input type="email" id="inputPassword" class="form-control" placeholder="Password" required="required">
             </div>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <!-- <div class="form-group"> -->
             <!-- <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me">
                 Remember Password
               </label>
             </div> -->
-          </div>
-          <a class="btn btn-primary btn-block" href="index.html">Add Income</a>
+          <!-- </div> -->
+          <!-- href="index.html" -->
+          <button class="btn btn-primary btn-block" href = "index.html">Add Income</button>
           </form>
 
         <!-- <div class="text-center">
@@ -65,6 +66,9 @@
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 </body>
 
 </html>

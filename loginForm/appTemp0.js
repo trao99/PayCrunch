@@ -28,9 +28,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
 app.post('/get-login', function (req, res) {
+    console.log("reached");
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
-        db.collection('loginIDs').insertOne(req.body);
+        const temp = db.db('login-info');
+
+        temp.collection('loginIDs').insertOne(req.body);
     });
     res.send('Data received:\n' + JSON.stringify(req.body));
 });
