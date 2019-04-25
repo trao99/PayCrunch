@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 
 
 
-var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/all-transaction-info?retryWrites=true', {useNewUrlParser: true});
+var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/login-info?retryWrites=true', {useNewUrlParser: true});
 
 //added
 let myDb = mongoose.connection;
