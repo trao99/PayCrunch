@@ -97,7 +97,11 @@ app.get('/getIncome',  function(req, res) {
   myDb.collection('transactions').find().toArray((err, result) => {
     if (err) return console.log(err)
     // renders index.ejs
-    res.render('incomeReport.ejs', {quotes: result})
+    var netWorth = 0;
+    for(var i=0; i<result.length; i++){
+      console.log(result[i].income);
+    }
+    res.render('incomeReport.ejs', {quotes: result, net: netWorth})
   })
 });
 
