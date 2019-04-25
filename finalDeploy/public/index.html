@@ -182,14 +182,7 @@
               </div>
               <a class="card-footer text-white clearfix small z-1">
                 <form method="GET" action="/getIncome">
-                <button button {
-                    background-color: Transparent;
-                    background-repeat:no-repeat;
-                    border: none;
-                    cursor:pointer;
-                    overflow: hidden;
-                    outline:none;
-                } type="submit" data-dismiss="modal" aria-label="incomeReport">View Details</button>
+                <button style="border: none; color: white; background-color: transparent;" type="submit" data-dismiss="modal" aria-label="incomeReport">View Details</button>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
@@ -208,10 +201,12 @@
                 <div class="mr-5">Expense Report</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="viewExpense.html">
-                <span class="float-left">View Details</span>
+                <form method="GET" action="/getExpense">
+                <button style="border: none; color: white; background-color: transparent;" type="submit" data-dismiss="modal" aria-label="incomeReport">View Details</button>
                 <span class="float-right">
                   <i class="fas fa-angle-right"></i>
                 </span>
+                </form>
               </a>
             </div>
           </div>
