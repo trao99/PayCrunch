@@ -27,20 +27,26 @@
       <div class="card-body">
         <form method="POST" action="/addExpense" >
           <div class="form-group">
+            <div class="header">Name of Expense</div>
+            <div class="form-label-group">
+              <input type="text" name="nameExpense" class="form-control" placeholder="Password" required="required">
+            </div>
+          </div>
+          <div class="form-group">
             <div class="header">Amount</div>
             <div class="form-label-group">
               <input type="number" name="expense" class="form-control" placeholder="Expense" required="required" autofocus="autofocus">
               <label for="inputEmail"></label>
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group"> -->
             <!-- <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me">
                 Remember Password
               </label>
             </div> -->
-          </div>
+          <!-- </div> -->
           <button class="btn btn-primary btn-block">Add Expense</button>
         </form>
         <!-- <div class="text-center">
@@ -57,6 +63,11 @@
 
   <!-- Core plugin JavaScript-->
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
 </body>
 

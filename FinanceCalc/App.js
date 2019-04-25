@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 
 
 
-var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
+var dbConn = mongoose.connect('mongodb+srv://sagar:fakepassword@paycrunch-xngfl.mongodb.net/all-transaction-info?retryWrites=true', {useNewUrlParser: true});
 
 //added
 let myDb = mongoose.connection;
@@ -32,7 +32,7 @@ app.post('/addIncome', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('loginIDs').insertOne(req.body);
+        myDb.collection('transactions').insertOne(req.body);
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -44,7 +44,7 @@ app.post('/addExpense', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('loginIDs').insertOne(req.body);
+        myDb.collection('transactions').insertOne(req.body);
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -52,7 +52,8 @@ app.post('/addExpense', function (req, res) {
 });
 
 
-app.get('/view-login',  function(req, res) {
+app.get('/getIncome',  function(req, res) {
+    var result = [];
     dbConn.then(function(db) {
         db.collection('loginIDs').find({}).toArray().then(function(feedbacks) {
             res.status(200).json(feedbacks);
