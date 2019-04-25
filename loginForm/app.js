@@ -20,10 +20,13 @@ const db = require('./config/keys').mongoURI;
 mongoose.connect(db, { useNewUrlParser: true })
 .then(() => console.log('MongoDB Connected'));
 
-
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+
+//static
+//app.use(express.static(path.resolve(__dirname, 'public'))); //added
 
 // bodyParser
 app.use(express.urlencoded({ extended: true }));
@@ -55,5 +58,8 @@ app.use(function(req, res, next){
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use(express.static(path.resolve(__dirname, 'public'))); //added
+
+
 
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0' );
