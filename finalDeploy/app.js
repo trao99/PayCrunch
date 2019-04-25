@@ -96,7 +96,7 @@ app.post('/addExpense', function (req, res) {
 app.get('/getIncome',  function(req, res) {
     var result = [];
     dbConn.then(function(db) {
-        db.collection('loginIDs').find({}).toArray().then(function(feedbacks) {
+        db.collection('transactions').find({}).toArray().then(function(feedbacks) {
             res.status(200).json(feedbacks);
         });
     });
