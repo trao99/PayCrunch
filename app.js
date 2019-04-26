@@ -75,7 +75,7 @@ app.post('/addIncome', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('transactions').insertOne(req.body);
+        myDb.collection('transactions').insertOne({"user": username, "typeIncome": req.body.typeIncome, "income": req.body.income, "date": new Date("<YYYY-mm-dd>")});
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -87,7 +87,7 @@ app.post('/addExpense', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('transactions').insertOne(req.body);
+        myDb.collection('transactions').insertOne({"user": username, "nameExpense": req.body.nameExpense, "expense": req.body.expense, "date": new Date("<YYYY-mm-dd>")});
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -98,30 +98,41 @@ app.post('/addExpense', function (req, res) {
 app.get('/getIncome',  function(req, res) {
     console.log(username);
     var listItems = [];
-  myDb.collection('transactions').find().toArray((err, result) => {
+    myDb.collection('transactions').find().toArray((err, result) => {
     if (err) return console.log(err)
     // renders index.ejs
     var netWorth = 0;
     var listOfSums = [];
+
     for(var i=0; i<result.length; i++){
       if(result[i].user == username){
         listItems.push(result[i]);
       }
-      var income = parseInt(result[i].income);
+    }
+    console.log(listItems);
+    for(var j = 0; j < listItems.length; j++){
+      var income = parseInt(listItems[j].income);
       var expense = 0;
       if(isNaN(income)){
         income = 0;
-        expense = parseInt(result[i].expense);
-        console.log(expense)
+        expense = parseInt(listItems[j].expense);
+        //console.log(expense)
+        netWorth = netWorth - parseInt(expense);
       }
-      console.log(listOfSums);
+      else{
       netWorth = netWorth+parseInt(income);
-      netWorth = netWorth - parseInt(expense);
-      listOfSums.push(netWorth)
+    }
+      listOfSums.push(netWorth);
+
+    }
+
+
+      //console.log(listOfSums);
+
       //console.log(parseInt(income));
       //console.log(netWorth);
-    }
-    res.render('incomeReport.ejs', {quotes:  listItems, net: listOfSums})
+
+    res.render('incomeReport.ejs', {quotes:  listItems, net: listOfSums});
   })
 });
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0' );
