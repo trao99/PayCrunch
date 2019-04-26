@@ -1,3 +1,13 @@
+
+# SpiderSniper
+
+A personal finance tracker that keeps track of daily income and expenses and generates an expenditure report.
+
+# Team
+Trishank Rao - rao78@purdue.edu
+Yazin Farook - yfarook@purdue.edu
+Sagar Nattuvetty - snattuve@purdue.edu
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
