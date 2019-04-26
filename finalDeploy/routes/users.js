@@ -79,6 +79,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
+    username = req.body.email;
   passport.authenticate('local', {
     //successRedirect: '/dashboard',
     successRedirect: '/index.html',
