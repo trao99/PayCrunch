@@ -75,7 +75,7 @@ app.post('/addIncome', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('transactions').insertOne({"user": username, "typeIncome": req.body.typeIncome, "income": req.body.income, "date": new Date("<YYYY-mm-dd>")});
+        myDb.collection('transactions').insertOne({"user": username, "typeIncome": req.body.typeIncome, "income": req.body.income, "date": new Date(Date.now())});
     });
     // res.send('helloo');
     res.redirect("/index.html");
@@ -87,7 +87,7 @@ app.post('/addExpense', function (req, res) {
     dbConn.then(function(db) {
         delete req.body._id; // for safety reasons
         //var temp = dbConn.db('login-info');
-        myDb.collection('transactions').insertOne({"user": username, "nameExpense": req.body.nameExpense, "expense": req.body.expense, "date": new Date("<YYYY-mm-dd>")});
+        myDb.collection('transactions').insertOne({"user": username, "nameExpense": req.body.nameExpense, "expense": req.body.expense, "date": new Date(Date.now())});
     });
     // res.send('helloo');
     res.redirect("/index.html");
