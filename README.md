@@ -8,6 +8,16 @@ Trishank Rao - rao78@purdue.edu
 Yazin Farook - yfarook@purdue.edu
 Sagar Nattuvetty - snattuve@purdue.edu
 
+# Technology Used
+
+Reactjs
+Expressjs
+HTML
+JS
+CSS
+MongoDB
+Deployed on Heroku
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
