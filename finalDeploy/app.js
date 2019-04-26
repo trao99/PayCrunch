@@ -22,6 +22,8 @@ var dbConn = mongoose.connect(passDb, { useNewUrlParser: true })
 
 let myDb = mongoose.connection;
 
+global.username;
+
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
@@ -94,6 +96,7 @@ app.post('/addExpense', function (req, res) {
 
 
 app.get('/getIncome',  function(req, res) {
+    console.log(username);
   myDb.collection('transactions').find().toArray((err, result) => {
     if (err) return console.log(err)
     // renders index.ejs
