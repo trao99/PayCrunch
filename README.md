@@ -4,19 +4,19 @@
 A personal finance tracker that keeps track of daily income and expenses and generates an expenditure report.
 
 # Team
-Trishank Rao - rao78@purdue.edu
-Yazin Farook - yfarook@purdue.edu
-Sagar Nattuvetty - snattuve@purdue.edu
+Trishank Rao - rao78@purdue.edu </br>
+Yazin Farook - yfarook@purdue.edu </br>
+Sagar Nattuvetty - snattuve@purdue.edu </br>
 
 # Technology Used
 
-Reactjs
-Expressjs
-HTML
-JS
-CSS
-MongoDB
-Deployed on Heroku
+Reactjs </br>
+Expressjs </br>
+HTML </br>
+JS </br>
+CSS </br>
+MongoDB </br>
+Deployed on Heroku </br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
