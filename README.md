@@ -1,5 +1,5 @@
 
-# SpiderSniper
+# PayCrunch
 
 A personal finance tracker that keeps track of daily income and expenses and generates an expenditure report.
 
