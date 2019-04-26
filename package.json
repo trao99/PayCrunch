@@ -1,24 +1,31 @@
 {
-  "name": "PayCrunch",
+  "name": "loginForm",
   "version": "1.0.0",
-  "description": "---",
-  "main": "index.js",
+  "description": "",
+  "main": "app.js",
   "scripts": {
-    "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/trao99/PayCrunch.git"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/trao99/PayCrunch/issues"
-  },
-  "homepage": "https://github.com/trao99/PayCrunch#readme",
   "dependencies": {
-    "axios": "^0.18.0",
-    "concurrently": "^4.1.0"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.16.1",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.4",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
