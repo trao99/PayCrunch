@@ -97,12 +97,16 @@ app.post('/addExpense', function (req, res) {
 
 app.get('/getIncome',  function(req, res) {
     console.log(username);
+    var listItems = [];
   myDb.collection('transactions').find().toArray((err, result) => {
     if (err) return console.log(err)
     // renders index.ejs
     var netWorth = 0;
     var listOfSums = [];
     for(var i=0; i<result.length; i++){
+      if(result[i].user == username){
+        listItems.push(result[i]);
+      }
       var income = parseInt(result[i].income);
       var expense = 0;
       if(isNaN(income)){
@@ -110,15 +114,14 @@ app.get('/getIncome',  function(req, res) {
         expense = parseInt(result[i].expense);
         console.log(expense)
       }
-
+      console.log(listOfSums);
       netWorth = netWorth+parseInt(income);
       netWorth = netWorth - parseInt(expense);
       listOfSums.push(netWorth)
       //console.log(parseInt(income));
       //console.log(netWorth);
     }
-    res.render('incomeReport.ejs', {quotes:  result, net: listOfSums})
+    res.render('incomeReport.ejs', {quotes:  listItems, net: listOfSums})
   })
 });
-
 app.listen(process.env.PORT || 3000, process.env.IP || '0.0.0.0' );
